@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PUBG Stream Report</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="dot"></span>PUBG <b>STREAM REPORT</b></div>
+  <div class="status" id="status">Verificando...</div>
+</header>
+<main>
+<section class="hero">
+  <div class="eyebrow">STREAMER ENCOUNTERS</div>
+  <h1>Descubra quando você encontrou um streamer.</h1>
+  <p>Pesquise seu nickname e veja somente kills e mortes em que o streamer estava transmitindo na Twitch naquele momento.</p>
+  <form id="searchForm" class="search">
+    <input id="nickname" placeholder="Digite seu nickname do PUBG" autocomplete="off" required>
+    <button>Pesquisar</button>
+  </form>
+  <div class="hint">Steam • partidas recentes • Twitch VODs</div>
+</section>
+<section id="loading" class="loading hidden">Analisando partidas e verificando transmissões...</section>
+<section id="error" class="error hidden"></section>
+<section id="results" class="results hidden">
+  <div class="result-head">
+    <div><span class="eyebrow">RESULTADO</span><h2 id="playerName"></h2></div>
+    <div class="count" id="count"></div>
+  </div>
+  <div id="cards" class="cards"></div>
+</section>
+<section class="how">
+  <div><span>01</span><b>Partida</b><p>Consultamos as partidas recentes do jogador na API oficial.</p></div>
+  <div><span>02</span><b>Telemetria</b><p>Identificamos exatamente quem matou quem e o horário do evento.</p></div>
+  <div><span>03</span><b>Transmissão</b><p>O encontro só aparece se houver VOD da Twitch cobrindo aquele horário.</p></div>
+</section>
+</main>
+<footer>PUBG Stream Report • Projeto independente. Não afiliado à KRAFTON ou Twitch.</footer>
+<script src="/app.js"></script>
+</body>
+</html>
