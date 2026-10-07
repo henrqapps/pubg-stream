@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: pubg-stream
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PUBG_PLATFORM
+        value: steam
+      - key: MAX_MATCHES
+        value: "10"
+      - key: VOD_MATCH_TOLERANCE_SECONDS
+        value: "90"
+      - key: PUBG_API_KEY
+        sync: false
+      - key: TWITCH_CLIENT_ID
+        sync: false
+      - key: TWITCH_CLIENT_SECRET
+        sync: false
+      - key: ADMIN_TOKEN
+        sync: false
