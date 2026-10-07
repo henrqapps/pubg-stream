@@ -1,40 +1,27 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PUBG Stream Report</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PUBG Stream Report — Encontre suas jogadas nas lives</title>
 <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><span class="dot"></span>PUBG <b>STREAM REPORT</b></div>
-  <div class="status" id="status">Verificando...</div>
-</header>
+<header class="topbar"><a class="brand" href="/"><span class="dot"></span>PUBG <b>STREAM REPORT</b></a><div class="status" id="status">Online</div></header>
 <main>
 <section class="hero">
-  <div class="eyebrow">STREAMER ENCOUNTERS</div>
-  <h1>Descubra quando você encontrou um streamer.</h1>
-  <p>Pesquise seu nickname e veja somente kills e mortes em que o streamer estava transmitindo na Twitch naquele momento.</p>
-  <form id="searchForm" class="search">
-    <input id="nickname" placeholder="Digite seu nickname do PUBG" autocomplete="off" required>
-    <button>Pesquisar</button>
-  </form>
-  <div class="hint">Steam • partidas recentes • Twitch VODs</div>
+<div class="eyebrow">PUBG × TWITCH</div>
+<h1>Você matou um streamer?<br><em>Descubra aqui.</em></h1>
+<p>Digite seu nickname do PUBG e encontre kills e mortes contra streamers que estavam transmitindo no momento — com o VOD já aberto na jogada.</p>
+<form id="searchForm" class="search"><input id="nickname" placeholder="Seu nickname no PUBG" autocomplete="off" required maxlength="64"><button>Encontrar jogadas</button></form>
+<div class="hint">Você não precisa ser streamer. Só precisa ter jogado a partida.</div>
 </section>
-<section id="loading" class="loading hidden">Analisando partidas e verificando transmissões...</section>
+<section id="loading" class="loading hidden">Analisando suas partidas e verificando as transmissões...</section>
 <section id="error" class="error hidden"></section>
-<section id="results" class="results hidden">
-  <div class="result-head">
-    <div><span class="eyebrow">RESULTADO</span><h2 id="playerName"></h2></div>
-    <div class="count" id="count"></div>
-  </div>
-  <div id="cards" class="cards"></div>
-</section>
+<section id="results" class="results hidden"><div class="result-head"><div><div class="eyebrow">JOGADAS ENCONTRADAS</div><h2 id="playerName"></h2></div><div class="count" id="count"></div></div><div id="cards" class="cards"></div></section>
 <section class="how">
-  <div><span>01</span><b>Partida</b><p>Consultamos as partidas recentes do jogador na API oficial.</p></div>
-  <div><span>02</span><b>Telemetria</b><p>Identificamos exatamente quem matou quem e o horário do evento.</p></div>
-  <div><span>03</span><b>Transmissão</b><p>O encontro só aparece se houver VOD da Twitch cobrindo aquele horário.</p></div>
+<div><span>01</span><b>Digite seu nick</b><p>Pesquisamos as partidas recentes do seu jogador.</p></div>
+<div><span>02</span><b>Encontramos o confronto</b><p>A telemetria mostra quem matou quem e o horário exato.</p></div>
+<div><span>03</span><b>Provamos a live</b><p>Só mostramos o resultado quando existe VOD cobrindo a jogada.</p></div>
 </section>
 </main>
 <footer>PUBG Stream Report • Projeto independente. Não afiliado à KRAFTON ou Twitch.</footer>
