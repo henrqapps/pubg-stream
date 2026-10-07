@@ -1,56 +1,36 @@
 # PUBG Stream Report
 
-Site independente inspirado no conceito de PUBG Report.
+Site onde qualquer jogador pesquisa o próprio nickname do PUBG e encontra somente confrontos contra streamers que estavam transmitindo no momento e possuem VOD cobrindo a jogada.
 
-## Regra principal
+## Fluxo
+1. O usuário informa seu nickname do PUBG.
+2. O servidor consulta as partidas recentes.
+3. A telemetria identifica kills e mortes.
+4. O adversário é comparado com a base interna de streamers.
+5. A Twitch é consultada para encontrar o VOD.
+6. O encontro só é publicado se o VOD cobrir o horário do evento.
+7. O resultado recebe um link para o VOD com o timestamp aproximado.
 
-Um encontro só aparece publicamente quando:
+O usuário comum não precisa ser streamer e não precisa estar cadastrado.
 
-1. o jogador pesquisado participou da partida;
-2. a telemetria confirma uma kill/death contra outro jogador;
-3. o outro jogador está cadastrado como streamer;
-4. existe um VOD arquivado da Twitch cobrindo o horário do evento.
+## Base interna de streamers
+Cada streamer possui twitchLogin, pubgNickname, displayName e enabled. A base é usada somente pelo servidor.
 
-Se não houver VOD cobrindo o horário, o encontro é descartado.
+Se o streamer não estava transmitindo, não existe VOD ou o horário não puder ser coberto pelo VOD, o encontro não aparece.
 
-## Rodar localmente
+## Configuração
+Copie .env.example para .env e preencha PUBG_API_KEY, TWITCH_CLIENT_ID, TWITCH_CLIENT_SECRET e ADMIN_TOKEN.
 
-Requer Node.js 20+.
+## Rodar
+Node.js 20+:
 
-```bash
-cp .env.example .env
-npm start
-```
+    npm install
+    npm start
 
-Abra http://localhost:3000
-
-## Variáveis
-
-- PUBG_API_KEY
-- PUBG_PLATFORM=steam
-- TWITCH_CLIENT_ID
-- TWITCH_CLIENT_SECRET
-- ADMIN_TOKEN
-- MAX_MATCHES
-- VOD_MATCH_TOLERANCE_SECONDS
-
-## Cadastrar streamer
-
-Use o nickname da Twitch e, preferencialmente, o nickname exato do PUBG:
-
-```bash
-curl -X POST http://localhost:3000/api/admin/streamers \
-  -H "Content-Type: application/json" \
-  -H "X-Admin-Token: SEU_TOKEN" \
-  -d '{"twitchLogin":"exemplo","displayName":"Exemplo","pubgNickname":"NickNoPUBG"}'
-```
-
-O campo pubgNickname é importante porque o nome da Twitch e o nickname do PUBG podem ser diferentes.
+Abra http://localhost:3000.
 
 ## Deploy
+O projeto inclui render.yaml para Render. Configure as variáveis secretas no serviço e nunca coloque credenciais no Git.
 
-O projeto inclui render.yaml para Render. Configure as mesmas variáveis como Environment Variables no serviço. Não coloque chaves no Git.
-
-## Observação
-
-A API do PUBG fornece partidas recentes, não um histórico ilimitado. O MVP consulta as partidas retornadas para o jogador. A confirmação histórica da transmissão é feita pelos VODs arquivados da Twitch.
+## Limitação
+A PUBG API disponibiliza partidas recentes. O MVP analisa as partidas retornadas para o jogador pesquisado. A confirmação histórica depende de VOD arquivado na Twitch.
