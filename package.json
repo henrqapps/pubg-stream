@@ -1,0 +1,9 @@
+{
+  "name":"pubg-stream",
+  "version":"1.0.0",
+  "private":true,
+  "description":"PUBG Stream Report — encontros com streamers confirmados por VOD da Twitch.",
+  "type":"module",
+  "scripts":{"start":"node server.js"},
+  "engines":{"node":">=20"}
+}
